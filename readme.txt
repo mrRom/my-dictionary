@@ -6,10 +6,10 @@ If you downloading project from repository, you have to include some js and css 
 
 Make directory "lib" in "src/main/webapp/resources/css" and "src/main/webapp/resources/js" directories.
 
-Then download if necessary and add "ui.jqgrid.css" to "src/main/webapp/resources/css/lib" 
+Download if necessary and add "ui.jqgrid.css" to "src/main/webapp/resources/css/lib" 
 and "jquery.jqGrid.src.js", "jquery.jqGrid.min.js", grid.locale-en.js to "src/main/webapp/resources/js/lib".
 
-This directories with its content were excluded from commits in .gitignore.
+These directories were excluded from commits (.gitignore).
 
 *******************************************************************************************************************
 All necessary dependencies for java you may find in pom.xml.
