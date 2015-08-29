@@ -84,7 +84,6 @@ public class UserWordService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.out.println(json);
 		return Response.status(200).entity(json).build();
 	}
 	

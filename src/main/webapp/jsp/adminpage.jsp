@@ -13,7 +13,7 @@
 	<title>Dictionary</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery.ui.base.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="resources/css/ui.jqgrid.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="resources/css/lib/ui.jqgrid.css"/>
 </head>
 <body>
 	<div><a href="<c:url value="/logout" />">

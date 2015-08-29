@@ -3,6 +3,8 @@
  */
 package com.mr.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -30,6 +32,8 @@ public class LoginLogoutController {
 	@Autowired
 	private UserBo userBo;
 	
+	private static final Logger logger = LoggerFactory.getLogger(LoginLogoutController.class);
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLoginPage(@RequestParam(value="error", required=false) boolean error,
 								@RequestParam(value="registered", required=false) boolean registered,
@@ -45,6 +49,7 @@ public class LoginLogoutController {
 			if(!user.equals(null)){
 				if (user.getUserPassword().equals(pass)){
 					user.setAccess(2);
+					logger.debug("ROLE_USER set for new registered user \"" + user.getUserName()+"\"");
 					userBo.update(user);
 				}
 			}
@@ -53,6 +58,7 @@ public class LoginLogoutController {
 		if (error == true) {
 			// Assign an error message
 			String message = messageSource.getMessage("label.loginpassworderror", null, LocaleContextHolder.getLocale());
+			logger.debug("Error during autorization occured: " + message);
 			model.put("error", message);
 		} else {
 			model.put("error", "");

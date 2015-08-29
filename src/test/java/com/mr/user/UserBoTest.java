@@ -20,8 +20,8 @@ public class UserBoTest {
 	//@Test
 	public void insertWordTest() {
 		DUser user = new DUser();
-		user.setUserName("test");
-		user.setUserPassword("test");
+		user.setUserName("test13");
+		user.setUserPassword("test13");
 		user.setUserEmail("test@test.ua");
 		user.setAccess(2);
 		userBo.save(user);
@@ -29,13 +29,13 @@ public class UserBoTest {
 	
 	@Test
 	public void loadUserByUsernameTest() {
-		assertEquals("test", userBo.loadUserByUsername("test").getUserName());
+		assertEquals("test13", userBo.loadUserByUsername("test13").getUserName());
 	}
 	
 	@After
 	//@Test
 	public void deleteWordTest() {
-		DUser user = (DUser) userBo.loadUserByUsername("test");
+		DUser user = (DUser) userBo.loadUserByUsername("test13");
 		userBo.delete(user);
 	}
 }

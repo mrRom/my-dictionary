@@ -78,7 +78,6 @@ public class UserTextsService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.out.println(json);
 		return Response.status(200).entity(json).build();
 	}
 	
@@ -107,34 +106,9 @@ public class UserTextsService {
     @Path("/{textId}")
         public Response deleteText(@PathParam("textId") int textId) {
 		  Text text= textBo.loadTextById(textId);
-		  System.out.println(text);
           if(text != null){
         	  textBo.delete(text); 
           }  	
           return Response.status(200).build(); 
-    }
-	
-	//for future consideration
-	/*@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addText(String json) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String userName = auth.getName();
-		JSONObject jsonObject;
-		System.out.println(json);
-		Text text = new Text();
-		try {
-			jsonObject = new JSONObject(json);
-			text.setTitle(jsonObject.getString("title"));
-			text.setText(jsonObject.getString("text"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-			return Response.status(404).build();
-		}
-		text.setUserName(userName);
-		textBo.save(text);
-		System.out.println(text.getTitle()+": "+text.getText());
-		return Response.status(200).build();
-	}*/
-	
+    }	
 }
