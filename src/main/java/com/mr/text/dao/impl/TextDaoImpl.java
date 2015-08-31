@@ -35,9 +35,10 @@ public class TextDaoImpl extends CustomHibernateDaoSupport implements TextDao{
 	}
 
 	@Override
-	public Text loadTextByTitle(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public Text loadTextByTitle(String title) {
+		Text text = (Text)getHibernateTemplate().find(
+                "from Text where title = ?", title).get(0);
+		return text;
 	}
 
 	@Override

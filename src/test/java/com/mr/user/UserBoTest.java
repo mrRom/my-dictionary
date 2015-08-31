@@ -5,17 +5,20 @@ import static org.junit.Assert.assertEquals;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.mr.user.bo.UserBo;
 import com.mr.user.model.DUser;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"classpath:spring/config/BeanLocations.xml"})
+
 public class UserBoTest {
-	ApplicationContext appContext = new ClassPathXmlApplicationContext(
-			"spring/config/BeanLocations.xml");
-	UserBo userBo = (UserBo) appContext.getBean("userBo");
+	@Autowired
+	UserBo userBo;
 	
 	@Before
 	//@Test

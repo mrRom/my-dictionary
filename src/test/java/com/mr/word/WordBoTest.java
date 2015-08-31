@@ -11,18 +11,21 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.mr.util.search.JQGridFilter;
 import com.mr.word.bo.WordBo;
 import com.mr.word.model.Word;
 
-//need to change tests
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"classpath:spring/config/BeanLocations.xml"})
 public class WordBoTest {
-	ApplicationContext appContext = new ClassPathXmlApplicationContext(
-			"spring/config/BeanLocations.xml");
-	WordBo wordBo = (WordBo) appContext.getBean("wordBo");
+	
+	@Autowired
+	WordBo wordBo;
 	@Before
 	@Test
 	public void insertWordTest() {
