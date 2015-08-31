@@ -32,7 +32,7 @@ public class WordBoTest {
 		word.setUsageExample("My dog is very big.");
 		wordBo.save(word);
 	}
-
+	
 	@Test
 	public void findByWordNameTest() {
 		assertEquals("Dog", wordBo.findByWordName("Dog").get(0).getWordName());
@@ -114,5 +114,4 @@ public class WordBoTest {
 			wordBo.delete(word);
 		}
 	}
-	
 }

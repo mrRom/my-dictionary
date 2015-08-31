@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,7 +19,16 @@ public class UserBoTest {
 	
 	@Before
 	//@Test
-	public void insertWordTest() {
+	public void insertUserTest() {
+		DUser user = new DUser();
+		user.setUserName("test13");
+		user.setUserPassword("test13");
+		user.setUserEmail("test@test.ua");
+		user.setAccess(2);
+		userBo.save(user);
+	}
+	@Test (expected=Exception.class)
+	public void insertUserExceptionTest() {
 		DUser user = new DUser();
 		user.setUserName("test13");
 		user.setUserPassword("test13");
@@ -34,7 +44,7 @@ public class UserBoTest {
 	
 	@After
 	//@Test
-	public void deleteWordTest() {
+	public void deleteUserTest() {
 		DUser user = (DUser) userBo.loadUserByUsername("test13");
 		userBo.delete(user);
 	}

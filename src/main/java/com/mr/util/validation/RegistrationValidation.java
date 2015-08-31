@@ -2,14 +2,19 @@ package com.mr.util.validation;
 
 import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
+import com.mr.user.bo.UserBo;
 import com.mr.user.model.DUser;
 
 @Service
 public class RegistrationValidation {
+	@Autowired
+	UserBo userBo;
+	
 	public boolean supports(Class<?> clazz) {
 	    return DUser.class.isAssignableFrom(clazz);
 	  }
@@ -25,6 +30,11 @@ public class RegistrationValidation {
 	          "lengthOfUser.registration.userName",
 	          "User Name must not more than 50 characters.");
 	    }
+	    if (!(userBo.loadUserByUsername(user.getUserName())==null)){
+	    	errors.rejectValue("userName",
+			          "UserExist.registration.user",
+			          "User with this name is already exist. Please, choose another name.");
+	    }
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPassword", 
 	    		"NotEmpty.registration.password", "Password must not be Empty.");
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userConfirmPassword", 
@@ -33,7 +43,7 @@ public class RegistrationValidation {
 		      errors.rejectValue("userPassword",
 		          "Size.registration.password",
 		          "Password must be between 4 to 20 characters.");
-		    }
+		}
 	    if (!(user.getUserPassword()).equals(user
 	        .getUserConfirmPassword())) {
 	      errors.rejectValue("userPassword",

@@ -33,6 +33,7 @@
 		<groupId>org.mockito</groupId>
 		<artifactId>mockito-all</artifactId>
 		<version>1.9.5</version>
+		<scope>test</scope>
 	</dependency>
      
 	<!-- JUnit testing framework -->	
@@ -227,7 +228,7 @@
 		
   </dependencies>
   <build>
-    <finalName>Dictionary</finalName>
+    <finalName>my-dictionary</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -246,7 +247,7 @@
 				  <url>http://127.0.0.1:8080/manager/text</url>
 				  <server>tomcat7</server>
 				  <update>true</update>
-				  <path>/Dictionary</path>
+				  <path>/my-dictionary</path>
 			</configuration>
 		</plugin>
 		<plugin>
